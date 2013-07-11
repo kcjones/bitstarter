@@ -72,7 +72,6 @@ var buildfn = function(checksfile) {
 	if (result instanceof Error) {
 	    console.error('Error: ' + util.format(response.message));
 	} else {
-	    console.error('found data in URL');
 	    var checkJson = checkHtmlFile(cheerioURL(result), checksfile);
 	    var outJson = JSON.stringify(checkJson, null, 4);
 	    console.log(outJson);
@@ -89,7 +88,6 @@ if(require.main == module) {
 	.parse(process.argv);
 
     if (program.url) {
-	console.log(program.url);
 	var checkURLResponse = buildfn(program.checks);
 	rest.get(program.url).on('complete', checkURLResponse);
     } else {
